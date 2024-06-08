@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipboard Paste Example</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        .paste-button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Paste from Clipboard Example</h2>
+        <form>
+            <div class="form-group">
+                <label for="textInput">Input Text</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="textInput" placeholder="Paste here">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-outline-secondary paste-button" id="pasteButton">Paste</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Clipboard JS -->
+    <script>
+        document.getElementById('pasteButton').addEventListener('click', async function() {
+            try {
+                const text = await navigator.clipboard.readText();
+                document.getElementById('textInput').value = text;
+            } catch (err) {
+                console.error('Failed to read clipboard contents: ', err);
+            }
+        });
+    </script>
+</body>
+</html>
