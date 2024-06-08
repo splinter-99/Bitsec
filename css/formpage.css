@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background-color: #0150b8;
+  /* background-image: linear-gradient(to bottom, #000000 10%, #0c0e29 100%); */
+}
+textarea,
+input {
+  color: #89898a !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+.formpage {
+  margin-top: 10rem;
+}
+.nav-link {
+  color: #fff;
+  font-weight: 600;
+}
+.nav-link:hover {
+  color: #0150b8;
+}
+.nav-item {
+  -webkit-transition: 300ms linear;
+  transition: 300ms linear;
+}
+.nav-item:hover {
+  background-color: #fff;
+  color: #0c0e29 !important;
+}
+.tab-content {
+  background-color: #fff;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  border-radius: 2px;
+}
+.formpage-header h1 {
+  color: #fff !important;
+  font-weight: 500;
+  margin-bottom: 4rem;
+  margin-top: -4rem !important;
+}
+.formpage-header h6 {
+  color: #fff;
+  font-size: 12px;
+  margin-bottom: 4rem;
+  margin-top: -3rem !important;
+}
+.active {
+  color: #0150b8 !important;
+}
+.form-text {
+  margin-top: 1rem;
+}
+.form-label {
+  color: #89898a;
+  font-weight: 500;
+  font-size: 14px;
+}
+select {
+  color: #0150b8 !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+.btn-primary {
+  background-color: #0150b8 !important;
+  border: none !important;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #3a86ff !important;
+}
+@media screen and (max-width: 768px) {
+  .formpage-header {
+    margin-top: -4.5rem !important ;
+  }
+  .form-box {
+    margin-top: -1rem;
+  }
+}
+@media screen and (max-width: 413px) {
+  .nav-link {
+    font-size: 12px;
+  }
+}

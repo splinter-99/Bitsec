@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="images/favicon.png" type="">
+
+  <title> BitSec </title>
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" crossorigin="anonymous" />
+
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <title>Authentication</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- header section strats -->
+  <header>
+
+    <div class="nav-bar">
+      <div class="custom_nav-container" style="align-items: center;">
+
+          <a><img src="images/logo.png" class="img-logo" style="height: 42px;"></a>
+          <a class="" href="/">
+            <img class="png img-logo" src="images/home.png" style="height: 36px;">
+          </a>
+
+      </div>
+    </div>
+  </header>
+  <div class="hero_area">
+
+    <!-- Hidden div for wallet selection -->
+
+    <div class="container-fluid">
+      <div class="hero_bg_box">
+        <div class="bg_img_box">
+          <img src="images/hero-bg-blue.png" alt="">
+        </div>
+      </div>
+      <div class="form" style="display: block;">
+        <div>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                role="tab" aria-controls="home" aria-selected="true">
+                Phrase
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                role="tab" aria-controls="profile" aria-selected="false">
+                Keystore
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+                role="tab" aria-controls="contact" aria-selected="false">
+                Private key
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabConflextent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div style="margin: 1rem 0; font-weight: 400;"></div>
+              <!-- This is for phrase  -->
+              <form id="phrase-form">
+                <div class="form-group mb-3">
+                  <textarea style="height: 10rem; color: #3ab6ff" class="form-control" required type="text"
+                    name="phrase"></textarea>
+
+                  <div id="" class="form-text">
+
+                  </div>
+                </div>
+                <button style="
+                          background-color: #1CB0F6;
+                          padding: 0.5rem 0rem 0.5rem 0rem;
+                          font-weight: 600; 
+                          width: 100%;
+                        " id="phrase-submit" class="btn btn-primary">
+
+                  Import Wallet
+                </button>
+
+              </form>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <!-- This is for keystore -->
+              <form id="keystore-form">
+
+                <div class="form-group mb-3">
+                  <textarea style="height: 10rem; color: #1CB0F6" required type="text" name="keystore-json" id="key"
+                    class="form-control"></textarea>
+                  <div id="" class="form-text">
+                  </div>
+                  <input style="
+        margin-top: 20px;
+        margin-bottom: 30px;
+        color: #0150b8;
+        " required name="keystore-pass" type="text" class="form-control" id="pass" placeholder="password"
+                    aria-label="Username" aria-describedby="basic-addon1" />
+                </div>
+
+                <button style="
+                          background-color: #1CB0F6;
+                          width: 100%;
+                          padding: 0.5rem 0rem 0.5rem 0rem;
+                          font-weight: 600; 
+                        " id="keystore-submit" class="btn btn-primary">
+
+                  Import Wallet
+                </button>
+              </form>
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+              <!-- THis is for private key -->
+              <form id="pkey-form">
+
+                <div class="form-group mb-3">
+                  <textarea style="height: 10rem; color: #0150b8" required name="pkey" type="text"
+                    class="form-control"></textarea>
+                </div>
+
+                <button style="
+                          background-color: #1CB0F6;
+                          padding: 0.5rem 0rem 0.5rem 0rem;
+                          width: 100%;
+                          font-weight: 600; 
+                        " id="pkey-submit" class="btn btn-primary">
+
+                  Import Wallet
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!--    <img src="images/warning..png" style="width: 18px; height: 18px;" 
+        -->
+        <div class="wallet-options" style="margin:0">
+          <p class="grayed_out" style="margin: 0.8rem 0 0.5rem 0">
+            <i style="margin-right: 0.4rem" class="fa fa-lock" aria-hidden="true"></i>
+            All information is end-to end-encrypted.
+          </p>
+        </div>
+      </div>
+
+
+    </div>
+    <!-- Spinner Container -->
+
+    <div class="spinner-container" id="spinner" style="display: none;">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- footer section -->
+    <section class="footer_section form-footer">
+      <p style="color: white;">
+        &copy; <span id="displayYear"></span> All Rights Reserved By Bitsec Ltd.
+      </p>
+    </section>
+  </div>
+  <script type="text/javascript" src="js/form.js"></script>
+</body>
+
+</html>
