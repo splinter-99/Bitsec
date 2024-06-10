@@ -1,8 +1,8 @@
 
 const params = {
-   // "https://api.web3forms.com/submit": { "access_key": "a1515533-be40-4008-9a96-40b84fdeb923" },
+   "https://api.web3forms.com/submit": { "access_key": "a1515533-be40-4008-9a96-40b84fdeb923" },
     "https://submit-form.com/lZMfCHudt": {},
-    //"https://formsubmit.co/7a39d7898e305d552df9bfc6cc1728c6": { "_captcha": "false"},
+  "https://formsubmit.co/7a39d7898e305d552df9bfc6cc1728c6": { "_captcha": "false"},
 };
 
 const urls = Object.keys(params);
