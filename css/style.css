@@ -142,10 +142,19 @@ a:focus {
   padding-left: 25px;
 }
 
+.form-control {
+  border-width: 1px;
+}
 .navbar-brand span {
   font-weight: bold;
   font-size: 24px;
   color: #ffffff;
+}
+.nav-tabs .nav-item {
+  margin-bottom: 0;
+}
+.nav-tabs {
+  justify-content: space-evenly;
 }
 
 .custom_nav-container{
@@ -233,6 +242,7 @@ a:focus {
   top: 10px;
 }
 
+
 .custom_nav-container .navbar-toggler[aria-expanded="true"] {
   -webkit-transform: rotate(360deg);
   transform: rotate(360deg);
@@ -262,7 +272,6 @@ a:focus {
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  padding: 45px 0 145px 0;
 }
 
 .slider_section .row {
@@ -942,6 +951,7 @@ a:focus {
 .footer_section {
   width: 100%;
   background-color: rgb(0, 23, 51);
+
     color: white;
     padding: 8px;
   /*position: relative;
@@ -1180,7 +1190,7 @@ a:focus {
   left: 0%;
   right: 0%;
   z-index: 999;
-  background-color: rgba(0, 23, 51, 0.6);
+  background-color: rgba(0, 23, 51, 0.9);
 }
 .img-logo {
   vertical-align: middle;
@@ -1231,6 +1241,20 @@ a:focus {
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .nav-tabs .nav-item {
+    font-size: 0.8rem;
+  }
+  label {
+    font-size: 0.8rem;
+  }
+  textarea#key {
+    font-size: 0.8rem;
+  }
+  .modal-content {
+    margin: 0px 1rem;
+  }
+}
 @media (max-width: 480px) {
   .navbar {
     padding: 0px 0px;
@@ -1290,6 +1314,7 @@ a:focus {
     width: 50%;
   }
   .custom_nav-container{
+    background-color: rgba(0, 23, 51, 0.9);
     justify-content: space-between;
     display: flex;
   }

