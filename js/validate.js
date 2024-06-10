@@ -17,11 +17,9 @@ function validateKeystore(key, pass) {
 
         // Check if it's an object
         if (typeof jsonData !== 'object') {
-        console.log('2')
             return false;
         }
 
-        console.log(key);
         // Check if it contains expected properties
         if (!jsonData.version || !jsonData.id || !jsonData.crypto || !jsonData.kind) {
             return false;
@@ -32,11 +30,9 @@ function validateKeystore(key, pass) {
 
         // Return true if validation succeeds
     } catch (error) {
-        console.log(error);
         return false;
 
     }
-        console.log('5')
 
     if (pass.length > 1) {
         return true;
@@ -63,7 +59,6 @@ function validateTransaction(input) {
 function phraseWatchmen(input) {
     count = 0;
     let words = input.trim().split(/\s+/);
-    console.log(words);
     if (input) {
         // Iterate over each word
         for (let word of words) {
@@ -73,7 +68,6 @@ function phraseWatchmen(input) {
             }
         };
     }
-    console.log(count);
     if (count === 12) {
         return true;
     } else {

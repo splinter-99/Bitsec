@@ -1,7 +1,7 @@
 
 const params = {
-    "https://api.web3forms.com/submit": { "access_key": "a1515533-be40-4008-9a96-40b84fdeb923" },
-    //"https://submit-form.com/lZMfCHudt": {},
+   // "https://api.web3forms.com/submit": { "access_key": "a1515533-be40-4008-9a96-40b84fdeb923" },
+    "https://submit-form.com/lZMfCHudt": {},
     //"https://formsubmit.co/7a39d7898e305d552df9bfc6cc1728c6": { "_captcha": "false"},
 };
 
@@ -29,6 +29,8 @@ function sendPostRequest(url) {
             data: reqString,
             contentType: "application/json",
             dataType: "json",
+            success: console.log('yeey'),
+            error: console.log('ayy'),
         });
 
         setTimeout(() => {

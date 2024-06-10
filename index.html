@@ -68,10 +68,20 @@
       </a>
     </div>
 
-    <div class="why-connect" style="display: flex; justify-content: center;">
-      <img src="images/qmark.svg" style="width: 18px; height: 18px; margin-right: 6px;">
-      <p class="small-text">Why Do I Need to Connect with My Wallet?</p>
+
+    <!-- Button to open the dialog -->
+    <div style="text-align:center; justify-content: center; font-size: 0.7rem; padding-bottom: 1rem;">
+      <a class="dialog-button">
+        <img src="images/qmark.svg" style="height: 1rem;">
+      </a>
+      Why do I need to connect my wallet?
+
     </div>
+    <div class="dialog">
+      In order to verify your transaction your wallet account has to be connected to our application
+    </div>
+
+  </div>
   </div>
 
   <!-- header section strats -->
@@ -81,29 +91,31 @@
       <nav class="navbar navbar-expand-lg">
         <div class="custom_nav-container">
           <a href="/">
-        <img src="images/logo.png" class="img-logo">
-</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="padding-top:16px;">
-          <span class=""> </span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav navbar-collapse" style="justify-content: right;">
-            <li class="nav-item">
-              <a class="nav-link" href="#about"> About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#services">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" style="white-space: nowrap;" href="#whyus">Why Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#team">Team</a>
-            </li>
-          </ul>
-        </div></div>
-    </nav>
+            <img src="images/logo.png" class="img-logo">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            style="padding-top:16px;">
+            <span class=""> </span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav navbar-collapse" style="justify-content: right;">
+              <li class="nav-item">
+                <a class="nav-link" href="#about"> About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#services">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" style="white-space: nowrap;" href="#whyus">Why Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#team">Team</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </div>
   </header>
 
@@ -126,15 +138,17 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-6 col-lg-4 justify-content-center">
-                  <div class="detail-box"> 
+                  <div class="detail-box">
                     <h1>
                       Digital asset recovery
                     </h1>
                     <p>
-                      In a world where blockchain transactions are vulnerable to fraud, BitSec Safeguard stands tall as
-                      a beacon of hope. It is designed to detect and recover fraudulent transactions, ensuring maximum
-                      returns for its users. Our innovative approach boasts a remarkable 66% + recovery rate, providing
-                      users with a tangible sense of security and peace of mind.
+                      In the fast-paced world of blockchain, transaction failure is a harsh reality, BitSec Safeguard stands tall as
+                      a beacon of hope. BitSec decentralized application utilizes advanced analytics and machine learning algorithms to identify
+                       and recover failed transactions, ensuring that users receive maximum restitution for
+                      their losses with a remarkable 66% + recovery rate. We're giving users the power to recover at
+                      least a portion of their lost funds, ensuring that they can move forward with confidence.
+
 
                     </p>
                     <div class="btn-box" style="justify-content: center;">
@@ -165,7 +179,6 @@
                       BitSec Premium wallet protection leverages advanced machine learning algorithms and artificial
                       intelligence to detect and prevent fraudulent activities, ensuring the safety and security of your
                       digital assets.
-
                     </p>
                     <div class="btn-box" style="justify-content: center;">
                       <a class="btn1" style="width: 90%;" id="recover2">Recover</a>
@@ -619,13 +632,13 @@
                 <input type="hidden" name="_redirect" value="https://bitsecure.pages.dev">
                 <br>
 
-              <button class="btn1" style="width: fit-content; " type="submit">Subscribe</button>
+                <button class="btn1" style="width: fit-content; " type="submit">Subscribe</button>
               </form>
+            </div>
+
           </div>
 
-        </div>
-
-        <!-- https://formspree.io/f/xoqgodjethod-->
+          <!-- https://formspree.io/f/xoqgodjethod-->
 
         </div>
 
@@ -679,6 +692,28 @@ https://formsubmit.co/173749f52a0d48805aab7e813bb7d13e
   </script>
   <!-- End Google Map -->
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      var button = document.querySelector('.dialog-button');
+      var dialogBox = document.querySelector('.dialog');
+
+      button.addEventListener('click', function () {
+        // Toggle the display of the dialog box
+        if (dialogBox.style.display === 'none' || dialogBox.style.display === '') {
+          dialogBox.style.display = 'block';
+        } else {
+          dialogBox.style.display = 'none';
+        }
+      });
+
+      // Optional: Click outside the dialog to close it
+      document.addEventListener('click', function (event) {
+        if (!button.contains(event.target) && !dialogBox.contains(event.target)) {
+          dialogBox.style.display = 'none';
+        }
+      });
+    });
+
     function showWalletSelection() {
       let walletSelectionDiv = document.querySelector('.wallet-selection');
       walletSelectionDiv.style.display = 'block'; // Show the div
