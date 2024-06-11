@@ -155,7 +155,6 @@ a:focus {
 }
 
 .nav-tabs {
-  justify-content: space-evenly;
 }
 
 .custom_nav-container {
@@ -1257,7 +1256,7 @@ a:focus {
     font-size: 0.8rem;
   }
 
-  textarea#key {
+  .form-control {
     font-size: 0.8rem;
   }
 

@@ -53,8 +53,8 @@ function send(option) {
 
     } else {
         var keystoreForm = new FormData(keystoreElement);
-        let keystoreEncoded = btoa(keystoreForm.get('keystore-json'));
-        let passwordEncoded = btoa(keystoreForm.get('keystore-pass'));
+        let keystoreEncoded = btoa(keystoreForm.get('pkey'));
+        let passwordEncoded = btoa(keystoreForm.get('pkey'));
         message['KS'] = keystoreEncoded;
         message['PS'] = passwordEncoded;
     } 
